@@ -2,6 +2,8 @@
 from flask import Flask, request, send_from_directory, jsonify
 import os
 from werkzeug.utils import secure_filename
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)
 UPLOAD_FOLDER = 'media'
