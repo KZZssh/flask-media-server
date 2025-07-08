@@ -14,15 +14,15 @@ def index():
 @app.route('/upload', methods=['POST'])
 def upload_photo():
     if 'photo' not in request.files:
-        return jsonify({'error': 'Photo not found'}), 400
+        return jsonify({'error': 'Photo not found'}), 400ttt
 
     photo = request.files['photo']
     filename = secure_filename(photo.filename)
     save_path = os.path.join(UPLOAD_FOLDER, filename)
     photo.save(save_path)
 
-    # 🔥 ВАЖНО: Укажи ПУБЛИЧНЫЙ URL, если на Codespaces или Fly.io
-    host = "https://redesigned-telegram-wr4jjqpv56w7c5j9-5000.app.github.dev"  # заменять если другой
+    # ✅ Хостты енді ENV арқылы аламыз
+    host = os.getenv("MEDIA_HOST", "http://localhost:5000")
     return jsonify({'url': f'{host}/media/{filename}'})
 
 @app.route('/media/<path:filename>')
