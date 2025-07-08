@@ -32,5 +32,5 @@ def serve_photo(filename):
     return send_from_directory(UPLOAD_FOLDER, filename)
 
 if __name__ == '__main__':
-    # ❗️ Кодспейс сам меняет порт на 5000 → НЕ МЕНЯЙ!
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host='0.0.0.0', port=port)
