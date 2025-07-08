@@ -16,7 +16,7 @@ def index():
 @app.route('/upload', methods=['POST'])
 def upload_photo():
     if 'photo' not in request.files:
-        return jsonify({'error': 'Photo not found'}), 400ttt
+        return jsonify({'error': 'Photo not found'}), 400
 
     photo = request.files['photo']
     filename = secure_filename(photo.filename)
